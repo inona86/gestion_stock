@@ -21,6 +21,7 @@ public class Facture {
     @Column(name = "amount",nullable = false,length = 255)
     private float amount;
 
+    // Relation avec la Table Commande
     @OneToOne
     @JoinColumn(name = "facture_id")
     private Commande commande;

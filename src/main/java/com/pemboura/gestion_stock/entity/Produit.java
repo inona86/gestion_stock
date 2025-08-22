@@ -16,28 +16,33 @@ import java.util.List;
 
 public class Produit {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id_produit;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_produit;
 
-@Column(name = "nom",length = 250)
-private String nom;
+    @Column(name = "nom",length = 250)
+    private String nom;
 
-@Column(name = "designation",length = 250)
-private String designation;
+    @Column(name = "designation",length = 250)
+    private String designation;
 
-@Column(name = "quantiteStock",length = 250)
-private int quantiteStock;
+    @Column(name = "quantiteStock",length = 250)
+    private int quantiteStock;
 
-@Column(name = "prix",length = 250)
-private float prix;
+    @Column(name = "prix",length = 250)
+    private float prix;
 
+    // relation avec la Table Produit
+    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
+    private List<Fournisseur> fournisseurs = new ArrayList<Fournisseur>();
 
-@ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
+    // Relation avec categorie
+    @ManyToOne
+    @JoinColumn(name = "categorie_id")
+    private Categorie categorie;
 
-private List<Fournisseur> fournisseurs = new ArrayList<Fournisseur>();
+    // Relation avec la table Commande
+    @OneToMany(mappedBy = "produit",fetch = FetchType.LAZY)
+    private List<ProduitsCommander> produitsCommanderList ;
 
-@ManyToOne
-@JoinColumn(name = "categorie_id")
-private Categorie categorie;
 }
