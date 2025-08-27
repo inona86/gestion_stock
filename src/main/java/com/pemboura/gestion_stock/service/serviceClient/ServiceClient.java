@@ -13,4 +13,5 @@ public interface ServiceClient {
     public Optional<Client> getClientById(long id);
     public boolean existsById (long id);
     public  void deleteById(long id);
+    public Long searchByNom(String nom);
 }

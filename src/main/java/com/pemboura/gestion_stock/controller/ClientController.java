@@ -45,4 +45,10 @@ public class ClientController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Mes propres methodes
+    @GetMapping("/count/{nom}")
+    public Long searchByNom(@PathVariable String nom){
+        return serviceClient.searchByNom(nom);
+    }
 }

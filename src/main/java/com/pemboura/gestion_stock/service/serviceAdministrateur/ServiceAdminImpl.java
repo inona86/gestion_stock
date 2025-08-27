@@ -2,15 +2,18 @@ package com.pemboura.gestion_stock.service.serviceAdministrateur;
 
 import com.pemboura.gestion_stock.entity.Administrateur;
 import com.pemboura.gestion_stock.repository.AdministrateurRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Service
 public class ServiceAdminImpl implements ServiceAdmin{
 
     private AdministrateurRepository administrateurRepository;
+
     @Override
     public void create(Administrateur administrateur) {
         administrateurRepository.save(administrateur);

@@ -2,12 +2,14 @@ package com.pemboura.gestion_stock.service.serviceFournisseur;
 
 import com.pemboura.gestion_stock.entity.Fournisseur;
 import com.pemboura.gestion_stock.repository.FournisseurRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class ServiceFournisseurImpl implements ServiceFournisseur{
 
     private FournisseurRepository fournisseurRepository;
@@ -35,5 +37,10 @@ public class ServiceFournisseurImpl implements ServiceFournisseur{
     @Override
     public void deleteById(long id) {
         fournisseurRepository.deleteById(id);
+    }
+
+    @Override
+    public Long countByName(String nom) {
+        return fournisseurRepository.countByNom(nom);
     }
 }

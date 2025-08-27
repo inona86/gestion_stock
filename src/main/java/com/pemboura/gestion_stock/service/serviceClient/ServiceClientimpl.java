@@ -13,6 +13,8 @@ import java.util.Optional;
 public class ServiceClientimpl implements ServiceClient{
 
     private ClientRepository clientRepository;
+
+
     @Override
     public void create(Client client) {
         clientRepository.save(client);
@@ -36,5 +38,10 @@ public class ServiceClientimpl implements ServiceClient{
     @Override
     public void deleteById(long id) {
         clientRepository.deleteById(id);
+    }
+
+    @Override
+    public Long searchByNom(String nom) {
+        return clientRepository.searchByNom(nom);
     }
 }

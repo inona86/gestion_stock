@@ -1,9 +1,12 @@
 package com.pemboura.gestion_stock.controller;
 
+import com.pemboura.gestion_stock.dto.AdministrateurDTO;
+import com.pemboura.gestion_stock.dto.UtilisateurDTO;
 import com.pemboura.gestion_stock.entity.Administrateur;
-import com.pemboura.gestion_stock.entity.Categorie;
+import com.pemboura.gestion_stock.repository.AdministrateurRepository;
 import com.pemboura.gestion_stock.service.serviceAdministrateur.ServiceAdmin;
-import com.pemboura.gestion_stock.service.serviceCategorie.ServiceCategorie;
+import com.pemboura.gestion_stock.serviceDTO.serviceDtoAdministrateur.ServiceDTOAdministrateur;
+import com.pemboura.gestion_stock.serviceDTO.serviceDtoFournisseur.ServiceDTOFournisseurIpml;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +21,12 @@ public class AdministrateurController {
     @Autowired
     ServiceAdmin serviceAdmin;
 
+    @Autowired
+    AdministrateurRepository administrateurRepository;
+
+    @Autowired
+    ServiceDTOAdministrateur serviceDTOAdministrateur;
+
     @PostMapping("/create")
     public ResponseEntity<Administrateur> create(@RequestBody Administrateur administrateur){
         serviceAdmin.create(administrateur);
@@ -25,8 +34,8 @@ public class AdministrateurController {
     }
 
     @GetMapping("/")
-    public List<Administrateur> getAllAdmin(){
-        return serviceAdmin.getAllAdministrateur();
+    public List<AdministrateurDTO> getAllUtilisateur(){
+        return administrateurRepository.findAll().stream().map(serviceDTOAdministrateur::toDTo).toList();
     }
 
     @GetMapping("{id}")

@@ -1,16 +1,16 @@
 package com.pemboura.gestion_stock.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import org.springframework.web.bind.annotation.Mapping;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@DiscriminatorValue("facture")
 
 public class Facture {
 

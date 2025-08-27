@@ -1,9 +1,7 @@
 package com.pemboura.gestion_stock.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -11,6 +9,9 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@DiscriminatorValue("commande")
 
 public class Commande {
 
